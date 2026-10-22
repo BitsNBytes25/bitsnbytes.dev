@@ -2,7 +2,7 @@
 <html class="dark" lang="en"><head>
 	<meta charset="UTF-8">
 	<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-	<title>TechPulse</title>
+	<title>Bits n Bytes</title>
 	<link rel="stylesheet" href="{{theme_dir}}css/normalize.css"/>
 	<link rel="stylesheet" href="{{theme_dir}}css/styles.css"/>
 
@@ -59,21 +59,21 @@
 
 				<ul class="menu">
 					<li>
-						<a href="/pages/home.html">
+						<a href="{{webpath}}pages/home.html">
 							Home
 						</a>
 					</li>
 					<li>
-						<a href="/posts.html?tag=Review">Reviews</a>
+						<a href="{{webpath}}posts.html?tag=Review">Reviews</a>
 					</li>
 					<li>
-						<a href="/posts.html">News</a>
+						<a href="{{webpath}}posts.html">News</a>
 					</li>
 					<li>
-						<a href="/posts.html?tag=Guide">Guides</a>
+						<a href="{{webpath}}posts.html?tag=Guide">Guides</a>
 					</li>
 					<li>
-						<a href="/pages/about.html">About</a>
+						<a href="{{webpath}}pages/about.html">About</a>
 					</li>
 				</ul>
 			</nav>
@@ -86,10 +86,10 @@
 		<div class="site-container">
 			<div class="footer-content">
 				<ul class="footer-links">
-					<li><a href="/pages/about.html">About</a></li>
-					<li><a href="/pages/contact.html">Contact</a></li>
-					<li><a href="/pages/privacy.html">Privacy Policy</a></li>
-					<li><a href="/pages/terms-of-use.html">Terms of Service</a></li>
+					<li><a href="{{webpath}}pages/about.html">About</a></li>
+					<li><a href="{{webpath}}pages/contact.html">Contact</a></li>
+					<li><a href="{{webpath}}pages/privacy.html">Privacy Policy</a></li>
+					<li><a href="{{webpath}}pages/terms-of-use.html">Terms of Service</a></li>
 					<li><a href="https://ko-fi.com/bitsandbytes">Donate</a></li>
 				</ul>
 				<ul class="social-links">
@@ -183,7 +183,7 @@
 							}, 2000);
 						}
 					}),
-					sponsor = document.querySelector('.sponsor-placement');
+				sponsor = document.querySelector('.sponsor-placement');
 				if (sponsor) {
 					intersectionObserver.observe(sponsor);
 				}
