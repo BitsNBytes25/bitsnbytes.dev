@@ -1,0 +1,40 @@
+<main>
+	<div class="site-container">
+		<div class="author-container" itemscope="" itemtype="http://schema.org/Person">
+			<aside class="author-sidebar">
+				<% if(data.image) { %>
+					<img class="author-image" itemprop="image" src="<%= data.image.src %>" alt="<%= data.title %>"/>
+				<% } %>
+			</aside>
+
+			<main class="author-content">
+				<h1 itemprop="name"><%= data.title %></h1>
+
+				<% if (data.tagline) { %>
+					<p class="author-tagline"><%= data.tagline %></p>
+				<% } %>
+
+				<% if(data.get('socials', null)) { %>
+					<ul class="author-profiles">
+						<% Object.keys(data.socials).forEach(key => { %>
+						<li>
+							<a itemprop="url" href="<%= data.socials[key] %>" title="<%= data.title %> on <%= key %>" target="_blank">
+								<i is="cms-icon" icon="<%= key %>"></i>
+							</a>
+						</li>
+						<% }) %>
+					</ul>
+				<% } %>
+
+				<%= data.body %>
+			</main>
+
+			<cms-pagelist
+				filter-author="<%= data.title %>,<%= data.alias %>"
+				type="posts"
+				layout="widgets/posts-home"
+				limit="12"
+				sort="datetime-r"></cms-pagelist>
+		</div>
+	</div>
+</main>

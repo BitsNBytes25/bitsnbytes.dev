@@ -1,0 +1,26 @@
+<div class="posts-sidebar">
+	<% data.posts.forEach(function(post) { %>
+		<div class="post">
+			<% if(post.image) { %>
+				<div class="post-image">
+					<a href="<%= post.permalink %>">
+						<img alt="<%= post.title %>" src="<%= post.image.src %>"/>
+					</a>
+				</div>
+			<% } else { %>
+				<div class="post-image">
+					<a href="<%= post.permalink %>">
+						<img alt="<%= post.title %>" src="/themes/bitsnbytes/images/accessories-text-editor.svg"/>
+					</a>
+				</div>
+			<% } %>
+
+			<div class="post-content">
+				<h3 class="post-title">
+					<a href="<%= post.permalink %>"><%= post.title %></a>
+				</h3>
+				<p class="post-date"><%= post.date %></p>
+			</div>
+		</div>
+	<% }) %>
+</div>

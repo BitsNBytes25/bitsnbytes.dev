@@ -1,0 +1,29 @@
+<div class="sponsor-sidebar">
+	<% data.sponsors.forEach(function(post) { %>
+		<div class="sponsor-placement" data-ad="<%= post.url.replace('/sponsors/', '').replace('.md', '') %>">
+			<% if(post.video && post.image) { %>
+				<div class="post-image">
+					<a href="<%= post.link %>">
+						<video autoplay muted loop width="100%" height="auto" playsinline poster="<%= post.image.src %>">
+							<source src="<%= post.video.src %>" type="video/<%= post.video.src.split('.').pop() %>"/>
+						</video>
+					</a>
+				</div>
+			<% } else if(post.video) { %>
+				<div class="post-image">
+					<a href="<%= post.link %>">
+						<video autoplay muted loop width="100%" height="auto" playsinline>
+							<source src="<%= post.video.src %>" type="video/<%= post.video.src.split('.').pop() %>"/>
+						</video>
+					</a>
+				</div>
+			<% } else if(post.image) { %>
+				<div class="post-image">
+					<a href="<%= post.link %>">
+						<img alt="<%= post.title %>" src="<%= post.image.src %>"/>
+					</a>
+				</div>
+			<% } %>
+		</div>
+	<% }) %>
+</div>

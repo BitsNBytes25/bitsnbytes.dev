@@ -1,0 +1,23 @@
+<section class="posts-home">
+	<h2>Recent Posts</h2>
+	<div class="blocks-4">
+		<% data.posts.forEach(function(post) { %>
+			<div class="block">
+				<% if(post.image) { %>
+					<a href="<%= post.permalink %>">
+						<div class="post-image">
+							<img alt="<%= post.title %>" src="<%= post.image.src %>"/>
+						</div>
+					</a>
+				<% } %>
+
+				<div>
+					<h3 class="post-title">
+						<a href="<%= post.permalink %>"><%= post.title %></a>
+					</h3>
+					<p class="post-excerpt"><%= truncate(post.excerpt, 20) %></p>
+				</div>
+			</div>
+		<% }) %>
+	</div>
+</section>

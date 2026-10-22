@@ -1,0 +1,7 @@
+<ul class="pages-sidebar">
+	<% data.pages.forEach(function(page) { %>
+		<li class="page">
+			<a href="<%= page.permalink %>"><%= page.title %></a>
+		</li>
+	<% }) %>
+</ul>

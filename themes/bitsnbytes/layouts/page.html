@@ -1,0 +1,44 @@
+<main <% if (data.sidebar) { %> class="has-sidebar" <% } %> >
+	<div class="site-container">
+		<article class="page">
+			<%= data.body %>
+		</article>
+		<% if (data.sidebar) { %>
+			<aside class="page-sidebar">
+				<% data.sidebar.forEach(section => { %>
+					<section class="<%= section.widget %>">
+						<% if (section.title) { %>
+							<h3><%= section.title %></h3>
+						<% } %>
+
+						<% if (section.widget === 'cms-pagelist') { %>
+							<cms-pagelist
+								type="<%= section.type %>"
+								layout="<%= section.layout %>"
+								<% if (section.permalink) { %> filter-permalink="<%= section.permalink %>" <% } %>
+								<% if (section.sort) { %> sort="<%= section.sort %>" <% } %>
+								>
+							</cms-pagelist>
+						<% } else if (section.widget === 'html') { %>
+							<%= section.content %>
+						<% } else if (section.widget === 'cta') { %>
+							<div class="post-cta">
+								<a href="<%= section.href %>" is="cms-button" icon="<%= section.icon ?? '' %>" class="post-cta"><%= section.text %></a>
+							</div>
+						<% } %>
+					</section>
+				<% }) %>
+
+				<section class="sponsor">
+					<h3 class="related-posts-header">Sponsor Spot</h3>
+					<cms-pagelist type="sponsors" sort="random" limit="1" layout="widgets/sponsor-sidebar"></cms-pagelist>
+				</section>
+
+				<section class="newsletter-signup">
+					<h3>Newsletter Signup</h3>
+					<div class="ml-embedded" data-form="HhxqlW"></div>
+				</section>
+			</aside>
+		<% } %>
+	</div>
+</main>

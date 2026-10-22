@@ -1,0 +1,212 @@
+<main class="has-sidebar">
+	<div class="site-container">
+		<article class="post">
+
+			<div class="post-breadcrumb">
+				<a href="/pages/home.html">Bits 'n Bytes</a>
+				<span>/</span>
+				<span>Article</span>
+			</div>
+
+			<h1>
+				<%= data.title %>
+			</h1>
+
+			<% if(data.author && data.date) { %>
+				<p class="post-meta">
+					Published by <cms-author author="<%= data.author %>" layout="widgets/author-link"><%= data.author %></cms-author> · <time class="post-date"><%= data.date %></time>
+				</p>
+			<% } else if (data.author) { %>
+				<p class="post-meta">
+					Published by <cms-author author="<%= data.author %>" layout="widgets/author-link"><%= data.author %></cms-author>
+				</p>
+			<% } else if (data.date) { %>
+				<p class="post-meta">
+					Published <time class="post-date"><%= data.date %></time>
+				</p>
+			<% } %>
+
+			<% if (data.draft) { %>
+				<p style="background-color: #7b0117; text-align: center; font-weight: bold; border: 2px solid #ffa8a8; padding: 1em;">DRAFT</p>
+			<% } %>
+
+			<% if(data.image) { %>
+				<div class="post-image">
+					<img alt="<%= data.title %>" src="<%= data.image.src %>"/>
+				</div>
+			<% } %>
+
+			<div class="post-content">
+				<%= data.body %>
+			</div>
+			<% if(data.fediverse) { %>
+				<section class="post-comments">
+					<h2>Comments</h2>
+					
+					<% if (data.draft) { %>
+						<p>Comments are disabled while post is in DRAFT</p>
+					<% } else { %>
+						<mastodon-comments post-id="<%= data.fediverse %>"></mastodon-comments>
+					<% } %>
+				</section>
+			<% } %>
+
+		</article>
+		<aside class="post-sidebar">
+			<!-- Author Block -->
+			<% if(data.author) { %>
+				<h2>About the Author</h2>
+				<cms-author author="<%= data.author %>" layout="widgets/author-embed"><%= data.author %></cms-author>
+			<% } %>
+
+			<!-- Call to Action Buttons -->
+			<% if (data.cta && Array.isArray(data.cta)) { %>
+				<section class="post-cta">
+					<% data.cta.forEach(cta => { %>
+						<a href="<%= cta.href %>" is="cms-button" icon="<%= cta.icon ?? '' %>" class="post-cta"><%= cta.title %></a>
+					<% }) %>
+				</section>
+			<% } else if (data.cta) { %>
+				<div class="post-cta">
+					<a href="<%= data.cta.href %>" is="cms-button" icon="<%= data.cta.icon ?? '' %>" class="post-cta"><%= data.cta.title %></a>
+				</div>
+			<% } %>
+
+			<!-- Review Details -->
+			<% if(data.review) { %>
+				<section class="post-review">
+					<h2 class="review-header">
+						<% if(data.review.rating) { %>
+							Overall Rating:
+							<span title="Overall Rating: <%= data.review.rating %> of 5" class="review-rating">
+								<i class="fa fa-star <%= data.review.rating >= 1 ? 'review-icon-solid' : 'review-icon-empty' %>"></i>
+								<i class="fa fa-star <%= data.review.rating >= 2 ? 'review-icon-solid' : 'review-icon-empty' %>"></i>
+								<i class="fa fa-star <%= data.review.rating >= 3 ? 'review-icon-solid' : 'review-icon-empty' %>"></i>
+								<i class="fa fa-star <%= data.review.rating >= 4 ? 'review-icon-solid' : 'review-icon-empty' %>"></i>
+								<i class="fa fa-star <%= data.review.rating >= 5 ? 'review-icon-solid' : 'review-icon-empty' %>"></i>
+							</span>
+						<% } else { %>
+							Review Details
+						<% } %>
+					</h2>
+
+					<% if(data.review.ratings) { %>
+						<div class="review-ratings">
+							<% data.review.ratings.forEach(function(rating) { %>
+								<div class="rating-label">
+									<%= rating.name %>:
+								</div>
+								<div title="<%= rating.name %>: <%= rating.rating %> of 5" class="rating-score">
+									<i class="fa fa-star <%= rating.rating >= 1 ? 'review-icon-solid' : 'review-icon-empty' %>"></i>
+									<i class="fa fa-star <%= rating.rating >= 2 ? 'review-icon-solid' : 'review-icon-empty' %>"></i>
+									<i class="fa fa-star <%= rating.rating >= 3 ? 'review-icon-solid' : 'review-icon-empty' %>"></i>
+									<i class="fa fa-star <%= rating.rating >= 4 ? 'review-icon-solid' : 'review-icon-empty' %>"></i>
+									<i class="fa fa-star <%= rating.rating >= 5 ? 'review-icon-solid' : 'review-icon-empty' %>"></i>
+								</div>
+							<% }) %>
+						</div>
+					<% } %>
+
+					<% if(data.review.purchase) { %>
+						<% if(data.review.purchase.price) { %>
+							<p class="review-price">
+								Purchase Price:
+								<% if(data.review.purchase.url) { %>
+									<a href="<%= data.review.purchase.url %>" target="_blank" rel="noopener">
+								<% } %>
+									<%= data.review.purchase.price %>
+									<% if(data.review.purchase.source) { %>
+									from <%= data.review.purchase.source %>
+									<% } %>
+								<% if(data.review.purchase.url) { %>
+									</a>
+								<% } %>
+								<br/>
+								<span class="review-price-notice">
+									Purchase price reflects cost at time of purchase.
+								</span>
+							</p>
+
+						<% } else if(data.review.purchase.msrp) { %>
+							<p class="review-price">
+								MSRP:
+								<% if(data.review.purchase.url) { %>
+								<a href="<%= data.review.purchase.url %>" target="_blank" rel="noopener">
+									<% } %>
+									<%= data.review.msrp %>
+									<% if(data.review.purchase.source) { %>
+									from <%= data.review.purchase.source %>
+									<% } %>
+									<% if(data.review.purchase.url) { %>
+								</a>
+								<% } %>
+								<br/>
+								<span class="review-price-notice">
+									<abbr title="Manufacturer Suggested Retail Price">MSRP</abbr> reflects cost at time of review.
+								</span>
+							</p>
+						<% } %>
+					<% } %>
+				</section>
+			<% } %>
+
+			<% if(data.tags) { %>
+				<section class="post-tags">
+					<h2>Tags</h2>
+					<ul>
+						<% data.tags.forEach(function(tag) { %>
+							<% if(tag) { %>
+							<li>
+								<a href="/posts.html?tag=<%= encodeURIComponent(tag) %>" class="post-tag button">
+									<%= tag.replace(/_/g, ' ') %>
+								</a>
+							</li>
+							<% } %>
+						<% }) %>
+					</ul>
+				</section>
+			<% } %>
+
+			<% if(data.products) { %>
+				<section class="post-products">
+					<h2>Products</h2>
+					<% data.products.forEach(function(product) { %>
+						<% if(product && product.href) { %>
+							<div class="related-product">
+								<% if(product.image) { %>
+									<div class="product-image">
+										<a href="<%= product.href %>">
+											<img src="<%= product.image %>" alt="<%= product.title ?? 'product image' %>"/>
+										</a>
+									</div>
+								<% } %>
+								<% if(product.title) { %>
+									<h3 class="product-title">
+										<a href="<%= product.href %>">
+											<%= product.title %>
+										</a>
+									</h3>
+								<% } %>
+							</div>
+						<% } %>
+					<% }) %>
+				</section>
+			<% } %>
+
+			<section class="related-posts">
+				<h2 class="related-posts-header">Related Posts</h2>
+				<cms-pagelist related="this" limit="5" layout="widgets/posts-sidebar"></cms-pagelist>
+			</section>
+
+			<section class="sponsor">
+				<h2 class="related-posts-header">Sponsor Spot</h2>
+				<cms-pagelist type="sponsors" sort="random" limit="1" layout="widgets/sponsor-sidebar"></cms-pagelist>
+			</section>
+
+			<h2>Newsletter Signup</h2>
+			<div class="ml-embedded" data-form="HhxqlW"></div>
+		</aside>
+	</div>
+
+
+</main>

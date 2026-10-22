@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+	<title>TechPulse</title>
+	<link rel="stylesheet" href="{{theme_dir}}css/normalize.css"/>
+	<link rel="stylesheet" href="{{theme_dir}}css/styles.css"/>
+
+	<link rel="alternative" type="application/rss+xml" title="Blog RSS Feed" href="{{webpath}}posts.rss"/>
+
+	<!-- Preload fonts to try to minimize content flickering -->
+	<link rel="preload" href="{{theme_dir}}fonts/space-grotesk-v22-latin-500.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+	<link rel="preload" href="{{theme_dir}}fonts/space-grotesk-v22-latin-700.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+	<link rel="preload" href="{{theme_dir}}fonts/space-grotesk-v22-latin-regular.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+
+	<!-- Favicon -->
+	<link rel="icon" href="{{theme_dir}}images/icon.webp">
+	<link rel="icon" href="{{theme_dir}}images/logo-32x32.png" sizes="32x32">
+	<link rel="icon" href="{{theme_dir}}images/logo-192x192.png" sizes="192x192">
+	<link rel="apple-touch-icon" href="{{theme_dir}}images/logo-180x180.png">
+	<meta name="msapplication-TileImage" content="{{theme_dir}}images/logo-270x270.png">
+
+	<!-- FB Verification -->
+	<meta name="facebook-domain-verification" content="xcpqxbq6cuhdmtva8gmtv9bfk010k8" />
+
+	<!-- Matomo -->
+	<script>
+		var _paq = window._paq = window._paq || [];
+		/* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+		//_paq.push(['trackPageView']);
+		_paq.push(['enableLinkTracking']);
+		(function() {
+			var u="//metrics.eval.bz/";
+			_paq.push(['setTrackerUrl', u+'matomo.php']);
+			_paq.push(['setSiteId', '7']);
+			var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+			g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+		})();
+	</script>
+	<!-- End Matomo Code -->
+</head>
+<body>
+	<header class="site-header">
+		<div class="site-container">
+			<div class="site-logo">
+				<a href="{{webpath}}pages/home.html">
+					<img src="{{theme_dir}}images/icon.webp" alt="Bits and Bytes Logo"/>
+				</a>
+				<a href="{{webpath}}pages/home.html">
+					<img src="{{theme_dir}}images/stylized-name.webp" alt="Bits 'n Bytes" style="height:28px;"/>
+				</a>
+			</div>
+			<nav class="site-nav">
+
+				<input id="menu-toggle" type="checkbox" />
+				<label class='menu-button-container' for="menu-toggle">
+					<div class='menu-button'></div>
+				</label>
+
+				<ul class="menu">
+					<li>
+						<a href="/pages/home.html">
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="/posts.html?tag=Review">Reviews</a>
+					</li>
+					<li>
+						<a href="/posts.html">News</a>
+					</li>
+					<li>
+						<a href="/posts.html?tag=Guide">Guides</a>
+					</li>
+					<li>
+						<a href="/pages/about.html">About</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+	<div id="cms"></div>
+
+	<footer class="site-footer">
+		<div class="site-container">
+			<div class="footer-content">
+				<ul class="footer-links">
+					<li><a href="/pages/about.html">About</a></li>
+					<li><a href="/pages/contact.html">Contact</a></li>
+					<li><a href="/pages/privacy.html">Privacy Policy</a></li>
+					<li><a href="/pages/terms-of-use.html">Terms of Service</a></li>
+					<li><a href="https://ko-fi.com/bitsandbytes">Donate</a></li>
+				</ul>
+				<ul class="social-links">
+					<li><a href="https://social.bitsnbytes.dev/@sitenews" title="Bits and Bytes on Mastodon"><i is="cms-icon" icon="mastodon"></i></a></li>
+					<li><a href="https://discord.gg/jyFsweECPb" title="Bits and Bytes on Discord"><i is="cms-icon" icon="discord"></i></a></li>
+					<li><a href="https://ko-fi.com/bitsandbytes" title="Support Bits and Bytes on Ko-Fi"><i is="cms-icon" icon="dollar"></i></a></li>
+					<li><a href="https://bitsnbytes.dev/posts.rss" title="RSS Feed"><i is="cms-icon" icon="rss"></i></a></li>
+					<li><a href="https://www.youtube.com/@bitsandbytes1042" title="Bits n Bytes on Youtube"><i is="cms-icon" icon="youtube"></i></a></li>
+					<li><a href="https://tube.bitsnbytes.dev/c/bitsnbytes/videos" title="Bits n Bytes on Peertube"><i is="cms-icon" icon="play"></i></a></li>
+				</ul>
+			</div>
+			<p class="legal-notice">
+				© 2026 Bits and Bytes. All rights reserved.<br/>
+				<a href="https://markdownmaster.com/">
+					Powered by Markdown Master CMS
+				</a> |
+				<a href="https://eval.agency">
+					Designed, Developed, & Hosted by eVAL Agency
+				</a> |
+				<a href="https://worttechnologies.tech">
+					Collaboration with Wort Technologies
+				</a>
+			</p>
+		</div>
+	</footer>
+
+	<!-- CMS.js -->
+	<script src="{{webpath}}app/cms.min.js"></script>
+
+
+	<script src="https://assets.mailerlite.com/js/universal.js"></script>
+
+	<script>
+		// Setup config from server
+		CMS.load({{config}});
+
+		// Setup all page types supported by this theme
+		CMS.config.addTypes({{types}});
+
+		// Inform the CMS that the configuration is ready.
+		CMS.init();
+	</script>
+
+	<script>
+		// Common scripts; move these to the CMS core if needed in other themes
+		const truncate = (str, max = 10) => {
+			const array = str.trim().split(' ');
+			const ellipsis = array.length > max ? '...' : '';
+
+			return array.slice(0, max).join(' ') + ellipsis;
+		};
+
+		// Close the menu when a link is clicked
+		document.querySelectorAll('.site-nav a').forEach(function(link) {
+			link.addEventListener('click', function() {
+				document.getElementById('menu-toggle').checked = false;
+			});
+		});
+
+		document.addEventListener('cms:route', () => {
+			let searchIcon = document.querySelector('.search-group i');
+			if (searchIcon) {
+				searchIcon.addEventListener('click', function () {
+					let searchInput = document.querySelector('.search-group input');
+					if (searchInput && searchInput.value) {
+						searchInput.search();
+					}
+				});
+			}
+		});
+
+		document.addEventListener('cms:pagelist:loaded', e => {
+			if (e.detail.type === 'sponsors') {
+				let intersectionObserver = new IntersectionObserver(entries => {
+						if (entries[0].isIntersecting) {
+							// Image is within the viewport, but check if it's still there in a couple seconds too.
+							// If no that indicates the user just scrolled by without looking.
+							let target = entries[0].target;
+							setTimeout(() => {
+								if (target.offsetTop < (window.scrollY + window.innerHeight) && (target.offsetTop + target.offsetHeight) > window.scrollY) {
+									// Still in view, so count as a view
+									let ad = target.dataset.ad;
+									if (ad) {
+										// Push somewhere
+										if (typeof(window._paq) !== 'undefined') {
+											// Matomo tracking
+											_paq.push(['trackEvent', 'Sponsor', 'View', ad]);
+										}
+									}
+								}
+							}, 2000);
+						}
+					}),
+					sponsor = document.querySelector('.sponsor-placement');
+				if (sponsor) {
+					intersectionObserver.observe(sponsor);
+				}
+			}
+		});
+	</script>
+
+</body>
+</html>

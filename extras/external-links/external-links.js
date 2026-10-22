@@ -1,0 +1,83 @@
+/**
+ * Add the necessary tags for safely handling external links.
+ */
+document.addEventListener('cms:route', () => {
+
+	// Run this after a short delay to allow other plugins to add links as necessary.
+	setTimeout(() => {
+		let local = CMS.config.extra('external-links', 'local', [window.location.host]),
+			icons = CMS.config.extra('external-links', 'icons', false);
+
+		document.querySelectorAll('a').forEach(el => {
+			if (el.href.startsWith('http://') || el.href.startsWith('https://')) {
+				// Only process http(s) links, (skips mailto:, tel:, etc.)
+				let isLocal = false;
+
+				local.forEach(u => {
+					if (el.href.startsWith('https://' + u) || el.href.startsWith('http://' + u)) {
+						isLocal = true;
+					}
+				});
+
+				if (isLocal) {
+					return; // Skip local links
+				}
+
+				// Process external links
+				if (el.target == '') {
+					el.target = '_blank';
+				}
+				el.rel = 'external noopener';
+
+				el.classList.add('external');
+
+				if (icons && !el.querySelector('i')) {
+					let icon = 'external-link';
+					let icon_map = {
+						'https://amzn.to': 'amazon',
+						'https://www.amazon.com': 'amazon',
+						'https://amazon.com': 'amazon',
+						'https://discord.gg': 'discord',
+						'https://ko-fi.com': 'dollar',
+						'https://facebook.com': 'facebook',
+						'https://www.facebook.com': 'facebook',
+						'https://github.com': 'github',
+						'https://gitlab.com': 'gitlab',
+						'https://instagram.com': 'instagram',
+						'https://www.instagram.com': 'instagram',
+						'https://linkedin.com': 'linkedin',
+						'https://www.linkedin.com': 'linkedin',
+						'https://twitter.com': 'twitter',
+						'https://www.twitter.com': 'twitter',
+						'https://en.wikipedia.org': 'wikipedia',
+						'https://www.youtube.com': 'youtube',
+						'https://youtu.be': 'youtube',
+					};
+
+					// Allow an icon override to be set
+					if (el.dataset.icon) {
+						icon = icon = el.dataset.icon;
+					}
+					else {
+						for (let key in icon_map) {
+							if (el.href.startsWith(key)) {
+								icon = icon_map[key];
+								break;
+							}
+						}
+					}
+
+
+					if (icon) {
+						let iconEl = document.createElement('i', {is: 'cms-icon'});
+						iconEl.setAttribute('part', 'icon');
+						iconEl.setAttribute('icon', icon);
+						iconEl.classList.add('inline-icon');
+						iconEl.title = icon;
+						el.appendChild(iconEl);
+					}
+				}
+			}
+		});
+	}, 500);
+});
