@@ -50,13 +50,18 @@
 }
 
 :root {
-	--color-background: rgb(var(--rgb-background));
-	--color-text: rgb(var(--rgb-foreground));
-	--color-highlight: rgb(var(--rgb-highlight));
-	--color-dim: rgb(var(--rgb-foreground-dim));
-	--color-dark: rgb(var(--rgb-foreground-dark));
+	/* base background color */
+	--color-background: #101922;
+	/* base foreground color */
+	--color-text: #E4F5FF;
+	/* highlight color for accents */
+	--color-highlight: #8B5CF6;
+	--color-dim: #D1D5DB;
+	--color-dark: #9CA3AF;
 	--color-bg-1: #002d39;
 	--color-bg-2: #223215;
+
+	--color-header: alpha(from var(--color-background) / 80%);
 }
 
 /** </editor-fold> **/
@@ -68,12 +73,14 @@ html, body {
 	margin: 0;
 }
 
-html {
-	background-color: var(--color-background);
-}
-
 body {
-	background: linear-gradient(to right, var(--color-bg-1) 0%, var(--color-background) 10%, var(--color-background) 90%, var(--color-bg-2) 100%);
+	background-color: var(--color-background);
+
+	background-image: url(../images/circuit-board-bg.webp);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	background-position: center;
 }
 
 
@@ -168,7 +175,7 @@ a {
 
 .site-header {
 	backdrop-filter: blur(5px);
-	background-color: rgba(var(--rgb-background), .8);
+	background-color: var(--color-header);
 	border-bottom-color: rgba(var(--rgb-background-dim), .5);
 	border-bottom-width: 1px;
 	top: 0;
@@ -322,25 +329,49 @@ a {
 /** </editor-fold> **/
 
 /** <editor-fold desc="Blocks"> **/
-
 .blocks-2, .blocks-3, .blocks-4, .blocks-5, .blocks-6 {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 2rem;
+	display: grid;
+	gap: 1rem;
 }
-.blocks-2 .block,
-.blocks-3 .block,
-.blocks-4 .block,
-.blocks-5 .block,
+
+.blocks-2 {
+	grid-template-columns: repeat(2, 1fr);
+}
+.blocks-3 {
+	grid-template-columns: repeat(3, 1fr);
+}
+.blocks-4 {
+	grid-template-columns: repeat(4, 1fr);
+}
+.blocks-5 {
+	grid-template-columns: repeat(5, 1fr);
+}
+.blocks-6 {
+	grid-template-columns: repeat(6, 1fr);
+}
+
+.blocks-2 .block {
+	grid-column: span 2;
+}
+.blocks-3 .block {
+	grid-column: span 3;
+}
+.blocks-4 .block {
+	grid-column: span 4;
+}
+.blocks-5 .block {
+	grid-column: span 5;
+}
 .blocks-6 .block {
-	flex: 1 100%;
+	grid-column: span 6;
 }
+
 .blocks-2 .block img,
 .blocks-3 .block img,
 .blocks-4 .block img,
 .blocks-5 .block img,
 .blocks-6 .block img {
-	/*width: 100%;*/
+	width: 100%;
 	height: 100%;
 	object-fit: cover;
 }
@@ -350,14 +381,18 @@ a {
 /** <editor-fold desc="Site Footer"> **/
 
 .site-footer {
-	background-color: rgba(var(--rgb-background-dim), 1);
+	background-image: url(../images/footer-skyline.webp);
+	background-position: bottom;
+	background-repeat: no-repeat;
+	background-size: cover;
 	color: var(--color-dark);
-	padding: 2rem 0;
+	padding: 17rem 0 1rem;
 	margin-top: 4rem;
 	text-align: center;
 	font-size: 0.875rem;
 	line-height: 1.5em;
 }
+
 .site-footer ul {
 	list-style: none;
 	padding: 0;
@@ -1042,12 +1077,14 @@ cms-form .error-message.hidden {
 		justify-content: flex-end;
 	}
 
-	.blocks-2 .block,
-	.blocks-3 .block,
-	.blocks-4 .block,
-	.blocks-5 .block,
+	.blocks-2 .block {
+		grid-column: span 1;
+	}
+	.blocks-4 .block {
+		grid-column: span 2;
+	}
 	.blocks-6 .block {
-		flex: 1 calc(50% - 2rem);
+		grid-column: span 3;
 	}
 
 	.page-posts-listing .post {
@@ -1072,10 +1109,6 @@ cms-form .error-message.hidden {
 	.page-authors-single .author-content {
 		flex: 3 calc(75% - 4rem);
 	}
-	.footer-content {
-		display: flex;
-		justify-content: space-between;
-	}
 }
 
 @media (min-width: 1024px) {
@@ -1090,10 +1123,11 @@ cms-form .error-message.hidden {
 		flex: 2;
 	}
 
-	.blocks-3 .block,
-	.blocks-5 .block,
+	.blocks-3 .block {
+		grid-column: span 1;
+	}
 	.blocks-6 .block {
-		flex: 1 calc(33% - 2rem);
+		grid-column: span 2;
 	}
 
 	.has-sidebar .site-container {
@@ -1108,6 +1142,11 @@ cms-form .error-message.hidden {
 	.page-authors-single .author-image {
 		width: 15rem;
 	}
+
+	.footer-content {
+		display: flex;
+		justify-content: space-between;
+	}
 }
 
 @media (min-width: 1280px) {
@@ -1121,13 +1160,13 @@ cms-form .error-message.hidden {
 	}
 
 	.blocks-4 .block {
-		flex: 1 calc(25% - 2rem);
+		grid-column: span 1;
 	}
 	.blocks-5 .block {
-		flex: 1 calc(20% - 2rem);
+		grid-column: span 1;
 	}
 	.blocks-6 .block {
-		flex: 1 calc(16% - 2rem);
+		grid-column: span 1;
 	}
 }
 
