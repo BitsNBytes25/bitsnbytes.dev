@@ -1,3 +1,5 @@
+@use "sass:color";
+
 /** <editor-fold desc="Color Palettes and Variables"> **/
 
 :root {
@@ -17,35 +19,48 @@
 	--rgb-highlight: 139, 92, 246;
 }
 
+/* base background color */
+$color-background: #101922;
+$color-background-dark: #333943;
+$color-background-dim: #5d6268;
+/* base foreground color */
+$color-text: #E4F5FF;
+$color-text-dim: #D1D5DB;
+$color-text-dark: #9CA3AF;
+/* highlight color for accents */
+$color-highlight: #8B5CF6;
+$color-bg-1: #002d39;
+$color-bg-2: #223215;
+
 :root {
 	/* base background color */
-	--color-background: #101922;
-	--color-background-dark: #333943;
-	--color-background-dim: #5d6268;
+	--color-background: #{$color-background};
+	--color-background-dark: #{$color-background-dark};
+	--color-background-dim: #{$color-background-dim};
 	/* base foreground color */
-	--color-text: #E4F5FF;
-	--color-text-dim: #D1D5DB;
-	--color-text-dark: #9CA3AF;
+	--color-text: #{$color-text};
+	--color-text-dim: #{$color-text-dim};
+	--color-text-dark: #{$color-text-dark};
 	/* highlight color for accents */
-	--color-highlight: #8B5CF6;
-	--color-bg-1: #002d39;
-	--color-bg-2: #223215;
+	--color-highlight: #{$color-highlight};
+	--color-bg-1: #{$color-bg-1};
+	--color-bg-2: #{$color-bg-2};
 
-	--color-header: alpha(from var(--color-background) / 80%);
-	--color-header-border: alpha(from var(--color-highlight) / 50%);
-	--color-header-shadow: alpha(from var(--color-highlight) / 20%);
+	--color-header: #{color.change($color-background, $alpha: .8)};
+	--color-header-border: #{color.change($color-highlight, $alpha: .5)};
+	--color-header-shadow: #{color.change($color-highlight, $alpha: .2)};
 
-	--color-nav: var(--color-text-dim);
-	--color-nav-active: var(--color-highlight);
-	--color-nav-hover: alpha(from var(--color-highlight) / 80%);
+	--color-nav: #{$color-text-dim};
+	--color-nav-active: #{$color-highlight};
+	--color-nav-hover: #{color.change($color-highlight, $alpha: .8)};
 
-	--color-nav-popover: var(--color-text-dim);
-	--color-nav-popover-background: var(--color-background);
-	--color-nav-popover-border: var(--color-background-dark);
-	--color-nav-popover-shadow: alpha(from var(--color-highlight) / 20%);
+	--color-nav-popover: #{$color-text-dim};
+	--color-nav-popover-background: #{$color-background};
+	--color-nav-popover-border: #{$color-background-dark};
+	--color-nav-popover-shadow: #{color.change($color-highlight, $alpha: .2)};
 
-	--color-content-box-background: alpha(from var(--color-background) / 40%);
-	--color-content-box-border: var(--color-background-dark);
+	--color-content-box-background: #{color.change($color-background, $alpha: .4)};
+	--color-content-box-border: #{$color-background-dark};
 }
 
 /** </editor-fold> **/
