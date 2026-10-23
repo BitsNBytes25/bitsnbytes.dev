@@ -1,0 +1,22 @@
+/**
+ To compile: run sass styles.scss:style.css -s compressed
+ */
+
+@forward 'colors';
+@forward 'fonts';
+
+@forward 'general';
+@forward 'site_header';
+@forward 'site_nav';
+@forward 'site_container';
+@forward 'blocks';
+@forward 'site_footer';
+@forward 'page';
+@forward 'page_home';
+@forward 'page_about';
+@forward 'page_contact';
+@forward 'posts';
+@forward 'post';
+@forward 'author';
+@forward 'widget_search';
+

@@ -1,0 +1,66 @@
+/** <editor-fold desc="Site Container"> **/
+
+.site-container {
+	width: calc(100vw - 2rem);
+	padding-left: 1rem;
+	padding-right: 1rem;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.has-sidebar .site-container {
+	display: grid;
+	gap: 2rem;
+	grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+@media (min-width: 640px) {
+	.site-container {
+		max-width: 640px;
+		padding-left: 1.5rem;
+		padding-right: 1.5rem;
+		width: calc(640px - 3rem);
+	}
+}
+
+@media (min-width: 768px) {
+	.site-container {
+		max-width: 768px;
+		width: calc(768px - 3rem);
+	}
+}
+
+@media (min-width: 1024px) {
+	.site-container {
+		max-width: 1024px;
+		padding-left: 2rem;
+		padding-right: 2rem;
+		width: calc(1024px - 4rem);
+	}
+
+	.has-sidebar .site-container {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+	.has-sidebar .site-container article {
+		grid-column: span 2 / span 2;
+	}
+	.has-sidebar .site-container aside {
+		grid-column: span 1 / span 1;
+	}
+}
+
+@media (min-width: 1280px) {
+	.site-container {
+		max-width: 1280px;
+		width: calc(1280px - 4rem);
+	}
+}
+
+@media (min-width: 1536px) {
+	.site-container {
+		max-width: 1536px;
+		width: calc(1536px - 4rem);
+	}
+}
+
+/** </editor-fold> **/

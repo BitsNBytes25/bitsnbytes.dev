@@ -1,0 +1,24 @@
+/** <editor-fold desc="Search Widget"> **/
+
+.search-group {
+	position: relative;
+	margin: 0 auto;
+	width: 50%;
+}
+.search-group input {
+	padding: 1rem 2rem;
+	border-radius: 0.75rem;
+	width: 100%;
+	border: 1px solid var(--color-highlight);
+	box-shadow: 0 2px 3px 0 var(--color-highlight);
+}
+.search-group i {
+	position: absolute;
+	right: 1rem;
+	color: var(--color-background);
+	font-size: 2rem;
+	cursor: pointer;
+	top: calc(50% - 1rem);
+}
+
+/** </editor-fold> **/

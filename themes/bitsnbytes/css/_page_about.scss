@@ -1,0 +1,30 @@
+/** <editor-fold desc="About Us"> **/
+.page-pages-about .author-embed {
+	text-align: center;
+}
+.page-pages-about .author-embed .author-image {
+	max-width: 17rem;
+	aspect-ratio: 1 / 1;
+	border-radius: 100%;
+	box-shadow: 0 0 1rem var(--color-highlight);
+	border: 1px solid var(--color-highlight);
+	margin-bottom: 2rem;
+}
+.page-pages-about .author-embed .author-title {
+	text-decoration: none;
+	font-size: 1.25rem;
+}
+.page-pages-about .author-embed .author-tagline {
+	color: var(--color-text-dark);
+	font-size: 0.875rem;
+}
+.page-pages-about .author-embed ul {
+	list-style: none;
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+	margin-top: 1rem;
+	padding: 0;
+	font-size: 1.5rem;
+}
+/** </editor-fold> **/

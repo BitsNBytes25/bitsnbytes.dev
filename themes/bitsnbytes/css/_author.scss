@@ -1,0 +1,59 @@
+/** <editor-fold desc="Author Details Page"> **/
+
+.page-authors-single .author-container {
+	display: flex;
+	gap: 3rem;
+	flex-wrap: wrap;
+	border-bottom: 1px solid var(--color-text-dark);
+}
+.page-authors-single .author-sidebar {
+	flex: 1 100%;
+	text-align: center;
+}
+.page-authors-single .author-content {
+	flex: 1 100%;
+}
+.page-authors-single .author-image {
+	width: 20rem;
+	aspect-ratio: 1 / 1;
+	border-radius: 100%;
+	box-shadow: 0 0 1rem var(--color-highlight);
+	border: 1px solid var(--color-highlight);
+}
+.page-authors-single h1 {
+	margin-top: 0;
+}
+.page-authors-single .author-tagline {
+	text-align: center;
+	color: var(--color-text-dark);
+	font-size: 0.875rem;
+}
+.page-authors-single .author-profiles {
+	list-style: none;
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+	margin-top: 1rem;
+	padding: 0;
+	font-size: 1.5rem;
+}
+
+@media (min-width: 768px) {
+	.page-authors-single .author-image {
+		width: 12rem;
+	}
+	.page-authors-single .author-sidebar {
+		flex: 1 calc(25% - 4rem);
+	}
+	.page-authors-single .author-content {
+		flex: 3 calc(75% - 4rem);
+	}
+}
+
+@media (min-width: 1024px) {
+	.page-authors-single .author-image {
+		width: 15rem;
+	}
+}
+
+/** </editor-fold> **/

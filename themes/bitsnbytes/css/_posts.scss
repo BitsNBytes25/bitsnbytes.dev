@@ -1,0 +1,72 @@
+/** <editor-fold desc="Post listing"> **/
+
+.page-posts-listing .posts-tags {
+	display: flex;
+	gap: 1rem;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin-bottom: 4rem;
+}
+.page-posts-listing .post {
+	margin-bottom: 3rem;
+}
+.page-posts-listing .post-image {
+	overflow: hidden;
+	border-radius: 1rem;
+	aspect-ratio: 16 / 9;
+	grid-area: img;
+}
+.page-posts-listing .post-content {
+	grid-area: content;
+}
+.page-posts-listing .post-image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.3s ease;
+}
+.page-posts-listing .post-title {
+	margin-bottom: 1rem;
+	font-size: 1.5rem;
+}
+.page-posts-listing .post-title a {
+	text-decoration: none;
+}
+.page-posts-listing .post:hover a {
+	color: var(--color-highlight);
+}
+.page-posts-listing .post-excerpt {
+	margin-top: 0.5rem;
+	font-size: 0.875rem;
+	line-height: 1.25rem;
+	color: var(--color-text-dark);
+	font-weight: 400;
+}
+.page-posts-listing .posts-pagination {
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+	margin-bottom: 4rem;
+}
+.page-posts-listing .posts-pagination a.button {
+	border-radius: 2em;
+	font-size: 0.875rem;
+}
+
+@media (min-width: 768px) {
+	.page-posts-listing .post {
+		display: grid;
+		gap: 1.5rem;
+		grid-template-columns: 1fr 2fr;
+		grid-template-areas: "img content";
+		margin-bottom: 4rem;
+	}
+	.page-posts-listing .post-title {
+		margin-top: 0;
+	}
+	.page-posts-listing .post-excerpt {
+		margin-bottom: 0;
+	}
+}
+
+/** </editor-fold> **/

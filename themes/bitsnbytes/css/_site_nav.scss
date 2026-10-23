@@ -1,0 +1,157 @@
+/** <editor-fold desc="Site Navigation"> **/
+
+.site-nav {
+	flex: 1;
+	font-weight: 500;
+	font-size: 0.875rem;
+	line-height: 1.25rem;
+}
+.site-nav a {
+	color: var(--color-nav);
+	text-decoration: none;
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	align-content: center;
+	align-self: center;
+	padding: 0.75rem 0;
+}
+.site-nav a:hover {
+	color: var(--color-nav-hover);
+}
+.site-nav a.active {
+	color: var(--color-highlight);
+}
+
+.site-nav .menu {
+	display: flex;
+	/*flex-direction: row;*/
+	/*margin: 0;*/
+	list-style-type: none;
+	margin: 4rem 0 0;
+	padding: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	flex-direction: column;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	color: var(--color-nav-popover);
+	background-color: var(--color-nav-popover-background);
+}
+
+.site-nav .menu > li {
+	/*margin: 0 1rem;*/
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	margin: 0;
+	padding: 0.5em 0;
+	width: 100%;
+}
+.site-nav .menu > li:not(:last-child) {
+	border-bottom: 1px solid #444;
+}
+
+#menu-toggle {
+	display: none;
+}
+.menu-button-container {
+	display: flex;
+	height: 100%;
+	width: 30px;
+	cursor: pointer;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.menu-button,
+.menu-button::before,
+.menu-button::after {
+	display: block;
+	background-color: var(--color-nav);
+	position: absolute;
+	height: 4px;
+	width: 30px;
+	transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+	border-radius: 2px;
+}
+.menu-button::before {
+	content: '';
+	margin-top: -8px;
+}
+.menu-button::after {
+	content: '';
+	margin-top: 8px;
+}
+#menu-toggle:checked + .menu-button-container .menu-button::before {
+	margin-top: 0;
+	transform: rotate(405deg);
+}
+#menu-toggle:checked + .menu-button-container .menu-button {
+	background: rgba(255, 255, 255, 0);
+}
+#menu-toggle:checked + .menu-button-container .menu-button::after {
+	margin-top: 0;
+	transform: rotate(-405deg);
+}
+.menu-button-container {
+	display: flex;
+}
+
+/* Adjust the menu compared to the checked status of the toggle */
+#menu-toggle ~ .menu li {
+	height: 0;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+#menu-toggle:checked ~ .menu {
+	box-shadow: 0 2px 4px var(--color-nav-popover-shadow);
+}
+#menu-toggle:checked ~ .menu li {
+	border-bottom: 1px solid var(--color-nav-popover-border);
+	height: 2.5em;
+	padding: 0.5em;
+	transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+
+
+
+@media (min-width: 768px) {
+	.menu-button-container {
+		display: none;
+	}
+	.site-nav .menu {
+		position: relative;
+		flex-direction: row;
+		margin: 0;
+		background-color: transparent;
+	}
+	.site-nav .menu > li {
+		width: auto;
+		border: none;
+		color: inherit;
+		overflow: inherit;
+	}
+	#menu-toggle ~ .menu li {
+		height: auto;
+		border: none;
+		padding: 0;
+		margin: 0 1rem;
+		transition: none;
+	}
+	#menu-toggle:checked ~ .menu {
+		box-shadow: none;
+	}
+	#menu-toggle:checked ~ .menu li {
+		border-bottom: 0 none;
+		padding: 0;
+		height: auto;
+	}
+}
+
+/** </editor-fold> **/

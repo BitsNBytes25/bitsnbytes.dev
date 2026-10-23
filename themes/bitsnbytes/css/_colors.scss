@@ -1,0 +1,51 @@
+/** <editor-fold desc="Color Palettes and Variables"> **/
+
+:root {
+	/* Base background color in RGB format */
+	--rgb-background: 16, 25, 34;
+	/* Slightly lighter background for header and other elements */
+	--rgb-background-dim: 31, 41, 55;
+	/* Even stronger background for contrast */
+	--rgb-background-dark: 46, 55, 76;
+	/* Base foreground color in RGB format */
+	--rgb-foreground: 228, 245, 255;
+	/* Slightly dimmer foreground for less emphasis */
+	--rgb-foreground-dim: 209, 213, 219;
+	/* Even darker foreground for low emphasis text */
+	--rgb-foreground-dark: 156, 163, 175;
+	/* Highlight color in RGB format */
+	--rgb-highlight: 139, 92, 246;
+}
+
+:root {
+	/* base background color */
+	--color-background: #101922;
+	--color-background-dark: #333943;
+	--color-background-dim: #5d6268;
+	/* base foreground color */
+	--color-text: #E4F5FF;
+	--color-text-dim: #D1D5DB;
+	--color-text-dark: #9CA3AF;
+	/* highlight color for accents */
+	--color-highlight: #8B5CF6;
+	--color-bg-1: #002d39;
+	--color-bg-2: #223215;
+
+	--color-header: alpha(from var(--color-background) / 80%);
+	--color-header-border: alpha(from var(--color-highlight) / 50%);
+	--color-header-shadow: alpha(from var(--color-highlight) / 20%);
+
+	--color-nav: var(--color-text-dim);
+	--color-nav-active: var(--color-highlight);
+	--color-nav-hover: alpha(from var(--color-highlight) / 80%);
+
+	--color-nav-popover: var(--color-text-dim);
+	--color-nav-popover-background: var(--color-background);
+	--color-nav-popover-border: var(--color-background-dark);
+	--color-nav-popover-shadow: alpha(from var(--color-highlight) / 20%);
+
+	--color-content-box-background: alpha(from var(--color-background) / 40%);
+	--color-content-box-border: var(--color-background-dark);
+}
+
+/** </editor-fold> **/
