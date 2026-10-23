@@ -69,9 +69,68 @@
 	content: ' posts';
 }
 
+.home-project-pages .section-container {
+	gap: 3rem;
+
+	.page-title {
+		text-align: center;
+		margin-top: 0;
+
+		a {
+			text-decoration: none;
+		}
+	}
+
+	img {
+		max-height: 33vh;
+		margin: 0 auto;
+	}
+
+	.page-image-block {
+		order: 2;
+	}
+	.page-description-block {
+		order: 1;
+	}
+}
+
 @media (min-width: 768px) {
 	.home-recent-posts .blocks-4 .block:first-child {
 		grid-column: span 4;
+	}
+
+	.home-project-pages .section-container {
+		grid-template-columns: repeat(1, 1fr);
+
+		> .block:nth-child(2n+1) {
+			.group {
+				grid-template-columns: 1fr 2fr;
+			}
+			.page-image-block {
+				order: 1;
+			}
+			.page-description-block {
+				order: 2;
+			}
+		}
+
+		> .block:nth-child(2n) {
+			.group {
+				grid-template-columns: 2fr 1fr;
+			}
+			.page-image-block {
+				order: 2;
+			}
+			.page-description-block {
+				order: 1;
+			}
+		}
+	}
+}
+
+@media (min-width: 1024px) {
+	.home-project-pages .section-container {
+		grid-template-columns: repeat(2, 1fr);
 	}
 }
 

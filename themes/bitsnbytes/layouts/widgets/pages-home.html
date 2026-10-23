@@ -1,0 +1,30 @@
+<section class="pages-home">
+	<div class="blocks-2 section-container">
+		<% data.pages.forEach(function(page) { %>
+			<div class="block">
+				<% if(page.image) { %>
+					<div class="blocks-2 group">
+						<div class="block page-image-block">
+							<a href="<%= page.permalink %>">
+								<div class="page-image">
+									<img alt="<%= page.title %>" src="<%= page.image.src %>"/>
+								</div>
+							</a>
+						</div>
+						<div class="block page-description-block">
+							<h3 class="page-title">
+								<a href="<%= page.permalink %>"><%= page.title %></a>
+							</h3>
+							<p class="page-excerpt"><%= truncate(page.excerpt, 20) %></p>
+						</div>
+					</div>
+				<% } else { %>
+					<h3 class="page-title">
+						<a href="<%= page.permalink %>"><%= page.title %></a>
+					</h3>
+					<p class="page-excerpt"><%= truncate(page.excerpt, 20) %></p>
+				<% } %>
+			</div>
+		<% }) %>
+	</div>
+</section>
