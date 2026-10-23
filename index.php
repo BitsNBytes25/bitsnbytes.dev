@@ -2,10 +2,10 @@
 /**
  * Entry point for backend application
  *
- * @version dev
- * @copyright 2025 eVAL Agency
+ * @version 5.1.1
+ * @copyright 2025-2026 eVAL Agency
  * @license MIT
- * @link https://github.com/eVAL-Agency/MarkdownMasterCMS
+ * @link https://markdownmaster.com
  * @package MarkdownMasterCMS
  *
  * The MIT License (MIT)

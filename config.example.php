@@ -4,10 +4,10 @@
  *
  * Refer to https://markdownmaster.com/docs/site-configuration.html for full details
  *
- * @version dev
- * @copyright 2025 eVAL Agency
+ * @version 5.1.1
+ * @copyright 2025-2026 eVAL Agency
  * @license MIT
- * @link https://github.com/eVAL-Agency/MarkdownMasterCMS
+ * @link https://markdownmaster.com
  * @package MarkdownMasterCMS
  */
 
@@ -30,8 +30,19 @@ return [
 	// Set the theme to use for the frontend
 	'theme' => 'basic-blog',
 
+	// List any extras (plugins) to enable here
+	// Extras should be installed in the /extras/ directory
+	// 'my-extra',
+	'extras' => [
+
+	],
+
 	// Set to true to enable DEBUG mode on backend and frontend.
 	'debug' => false,
+
+	// Increase (or change) each time you do a major update to assets.
+	// This is used to invalidate browser caches.
+	'version' => '1',
 
 	// Uncomment and configure to enable email sending
 	/*
