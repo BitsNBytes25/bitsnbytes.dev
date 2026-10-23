@@ -1,23 +1,18 @@
+/**
+ * Color palettes used within this theme.
+ *
+ * alpha() is a new native CSS function but does not function on mobile devices yet,
+ * so SASS's color.change is used instead.
+ *
+ * Colors are defined **first** as SASS variables ($...)
+ * so they are available by the pre-processor internally.
+ *
+ * It is not recommended to use these pre-processor variables elsewhere
+ * in this theme however, please defer to the native CSS variables (--...) instead.
+ */
+
 @use "sass:color";
 
-/** <editor-fold desc="Color Palettes and Variables"> **/
-
-:root {
-	/* Base background color in RGB format */
-	--rgb-background: 16, 25, 34;
-	/* Slightly lighter background for header and other elements */
-	--rgb-background-dim: 31, 41, 55;
-	/* Even stronger background for contrast */
-	--rgb-background-dark: 46, 55, 76;
-	/* Base foreground color in RGB format */
-	--rgb-foreground: 228, 245, 255;
-	/* Slightly dimmer foreground for less emphasis */
-	--rgb-foreground-dim: 209, 213, 219;
-	/* Even darker foreground for low emphasis text */
-	--rgb-foreground-dark: 156, 163, 175;
-	/* Highlight color in RGB format */
-	--rgb-highlight: 139, 92, 246;
-}
 
 /* base background color */
 $color-background: #101922;
@@ -37,30 +32,32 @@ $color-bg-2: #223215;
 	--color-background: #{$color-background};
 	--color-background-dark: #{$color-background-dark};
 	--color-background-dim: #{$color-background-dim};
+
 	/* base foreground color */
 	--color-text: #{$color-text};
 	--color-text-dim: #{$color-text-dim};
 	--color-text-dark: #{$color-text-dark};
+
 	/* highlight color for accents */
 	--color-highlight: #{$color-highlight};
 	--color-bg-1: #{$color-bg-1};
 	--color-bg-2: #{$color-bg-2};
 
+	/* Colors for the site header */
 	--color-header: #{color.change($color-background, $alpha: .8)};
 	--color-header-border: #{color.change($color-highlight, $alpha: .5)};
 	--color-header-shadow: #{color.change($color-highlight, $alpha: .2)};
 
+	/* Colors for the site navigation in the header */
 	--color-nav: #{$color-text-dim};
 	--color-nav-active: #{$color-highlight};
 	--color-nav-hover: #{color.change($color-highlight, $alpha: .8)};
-
 	--color-nav-popover: #{$color-text-dim};
 	--color-nav-popover-background: #{$color-background};
 	--color-nav-popover-border: #{$color-background-dark};
 	--color-nav-popover-shadow: #{color.change($color-highlight, $alpha: .2)};
 
+	/* Colors for content boxes within the body */
 	--color-content-box-background: #{color.change($color-background, $alpha: .4)};
 	--color-content-box-border: #{$color-background-dark};
 }
-
-/** </editor-fold> **/
