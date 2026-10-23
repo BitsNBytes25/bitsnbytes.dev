@@ -1057,11 +1057,16 @@
    */
   function _fetchLayout() {
     _fetchLayout = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(layout, data) {
+      var version;
       return _regeneratorRuntime().wrap(function _callee2$(_context2) {
         while (1) switch (_context2.prev = _context2.next) {
           case 0:
+            version = '1';
+            if (_typeof(data.config) === 'object' && typeof data.config.version === 'string') {
+              version = data.config.version;
+            }
             return _context2.abrupt("return", new Promise(function (resolve, reject) {
-              var url = pathJoin(layout_path, layout + '.html');
+              var url = pathJoin(layout_path, "".concat(layout, ".html?v=").concat(version));
               Log.Debug('fetchLayout', url);
               loadTemplate(url, data).then(function (html) {
                 Log.Debug('fetchLayout', 'Fetched templated layout', url);
@@ -1071,7 +1076,7 @@
                 reject(e);
               });
             }));
-          case 1:
+          case 3:
           case "end":
             return _context2.stop();
         }
@@ -6952,6 +6957,12 @@
        * @type {boolean}
        */
       _this.debug = false;
+
+      /**
+       * Asset version, useful for cache busting
+       * @type {string}
+       */
+      _this.version = '1';
 
       // Allow options to be passed in by default for convenience
       if (options) {

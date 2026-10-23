@@ -3,7 +3,8 @@
 .search-group {
 	position: relative;
 	margin: 0 auto;
-	width: 50%;
+	width: 100%;
+	max-width: 30rem;
 }
 .search-group input {
 	padding: 1rem 2rem;
