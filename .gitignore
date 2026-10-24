@@ -22,9 +22,11 @@ data/
 # Skip environment-specific configuration files
 config.php
 .htaccess
+.env
 
 # Skip MarkdownMaster CMS base application
 app/
 backend/
 dev-router.php
 index.php
+/.idea/libraries/
