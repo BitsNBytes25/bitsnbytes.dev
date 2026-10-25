@@ -30,3 +30,5 @@ backend/
 dev-router.php
 index.php
 /.idea/libraries/
+/themes/bitsnbytes/css/styles.css
+/themes/bitsnbytes/css/styles.css.map

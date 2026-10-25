@@ -4,7 +4,7 @@
  *
  * Refer to https://markdownmaster.com/docs/site-configuration.html for full details
  *
- * @version 5.1.1
+ * @version 6.0.0-alpha
  * @copyright 2025-2026 eVAL Agency
  * @license MIT
  * @link https://markdownmaster.com

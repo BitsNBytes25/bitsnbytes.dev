@@ -25,6 +25,16 @@
 							<div class="post-cta">
 								<a href="<%= section.href %>" is="cms-button" icon="<%= section.icon ?? '' %>" class="post-cta"><%= section.text %></a>
 							</div>
+						<% } else if (section.widget === 'tech') { %>
+							<% if (data.tech_languages || data.tech_platforms) { %>
+								<h3>Languages & Platforms</h3>
+								<% data.tech_languages.forEach(lang => { %>
+									<img src="/images/lang/<%= lang.toLowerCase() %>.svg" alt="<%= lang %>" title="<%= lang %>" width="48" height="48"/>
+								<% }) %>
+								<% data.tech_platforms.forEach(platform => { %>
+									<img src="/images/os/<%= platform.toLowerCase() %>.svg" alt="<%= platform %>" title="<%= platform %>" width="48" height="48"/>
+								<% }) %>
+							<% } %>
 						<% } %>
 					</section>
 				<% }) %>

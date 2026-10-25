@@ -12,17 +12,28 @@
 				<%= data.title %>
 			</h1>
 
-			<% if(data.author && data.date) { %>
+			<% if(data.author || data.date || data.updated) { %>
 				<p class="post-meta">
-					Published by <cms-author author="<%= data.author %>" layout="widgets/author-link"><%= data.author %></cms-author> · <time class="post-date"><%= data.date %></time>
-				</p>
-			<% } else if (data.author) { %>
-				<p class="post-meta">
-					Published by <cms-author author="<%= data.author %>" layout="widgets/author-link"><%= data.author %></cms-author>
-				</p>
-			<% } else if (data.date) { %>
-				<p class="post-meta">
-					Published <time class="post-date"><%= data.date %></time>
+					<% if (data.author) { %>
+						Published by <cms-author author="<%= data.author %>" layout="widgets/author-link"><%= data.author %></cms-author>
+						<% if(data.date) { %>
+							·
+						<% } %>
+					<% } else if(data.date) { %>
+						Published on
+					<% } %>
+
+					<% if(data.date) { %>
+						<time class="post-date"><%= data.get('date') %></time>
+					<% } %>
+
+					<% if(data.updated) { %>
+						<% if(data.date) { %>
+							/
+						<% } %>
+
+						Updated <time class="post-updated"><%= data.get('updated') %></time>
+					<% } %>
 				</p>
 			<% } %>
 
