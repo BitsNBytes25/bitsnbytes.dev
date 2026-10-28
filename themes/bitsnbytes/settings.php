@@ -51,5 +51,6 @@ return [
 		'prismjs' => ['theme' => 'dark', 'lineNumbers' => true],
 		'mastodon-comments' => ['host' => 'social.bitsnbytes.dev'],
         'fslightbox' => [],
+        'cms-pagination' => [],
 	],
 ];

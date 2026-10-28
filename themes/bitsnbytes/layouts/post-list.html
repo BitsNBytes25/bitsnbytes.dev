@@ -4,34 +4,31 @@
 
 <main>
 	<div class="site-container">
-		<% current_tag = (new URLSearchParams(window.location.search)).get('tag') %>
-
-		<% if (current_tag === 'Review') { %>
+		<% if (data.hasFilterTag('review')) { %>
 			<h1 class="posts-title">Reviews</h1>
-		<% } else if (current_tag === 'Guide') { %>
+		<% } else if (data.hasFilterTag('guide')) { %>
 			<h1 class="posts-title">Guides</h1>
-		<% } else { %>
+		<% } else if (data.hasFilterTag('!review')) { %>
 			<h1 class="posts-title">Latest News</h1>
+		<% } else { %>
+			<h1 class="posts-title">All Posts</h1>
 		<% } %>
 
-		<% if (current_tag !== 'Review' && current_tag !== 'Guide') { %>
-			<div class="posts-tags">
-				<% tag_counter = 0 %>
-				<% data.getTags('weight-r').forEach(function(tag) { %>
-					<% if (tag.name === 'Review') return true; %>
-					<% if (tag.name === 'Guide') return true; %>
+		<div class="posts-tags">
+			<% tag_counter = 0 %>
+			<% data.getFilteredTags('weight-r').forEach(function(tag) { %>
+				<% if (tag.tag === 'review') return true; %>
+				<% if (tag.tag === 'guide') return true; %>
 
-					<% tag_counter++ %>
-					<% if (tag_counter > 6) return false; %>
-					<a
-						href="<%= tag.url %>" class="button<%= current_tag === tag.tag ? ' active' : '' %>"
-						title="<%= tag.name %> - <%= tag.count %> <% if(tag.count>1){ %>posts<% } else { %>post<% } %>">
-						<%= tag.name %>
-					</a>
-				<% }) %>
-			</div>
-		<% } %>
-
+				<% tag_counter++ %>
+				<% if (tag_counter > 8) return false; %>
+				<a
+					href="<%= data.getPageTagUrl(tag.name) %>" class="button<%= data.hasFilterTag(tag.tag) ? ' active' : '' %>"
+					title="<%= tag.name %> - <%= tag.count %> <% if(tag.count>1){ %>posts<% } else { %>post<% } %>">
+					<%= tag.name %>
+				</a>
+			<% }) %>
+		</div>
 
 		<% data.posts.forEach(function(post) { %>
 			<article class="post<% if(post.image) { %> has-image<% } %>">
@@ -56,47 +53,6 @@
 			</article>
 		<% }) %>
 
-		<% if (data.totalPages > 1) { %>
-			<p class="posts-pagination">
-				<% if (data.page > 1) { %>
-					<a href="<%= data.getPreviousPageUrl() %>" title="Previous Page" class="button">
-						&lt;
-					</a>
-				<% } %>
-
-				<a href="<%= data.getPageUrl(1) %>" title="First Page" class="button<%= data.page == 1 ? ' active' : '' %>">
-					1
-				</a>
-				<% if (data.page > 3) { %>
-					<span class="sep">...</span>
-				<% } %>
-				<% if (data.page > 2) { %>
-					<a href="<%= data.getPageUrl(data.page - 1) %>" title="Page <%= data.page - 1 %>" class="button"><%= data.page - 1 %></a>
-				<% } %>
-				<% if (data.page != 1 && data.page != data.totalPages) { %>
-					<a href="<%= data.getPageUrl(data.page) %>" title="Page <%= data.page %>" class="button active"><%= data.page %></a>
-				<% } %>
-				<% if (data.page < data.totalPages - 1) { %>
-					<a href="<%= data.getPageUrl(data.page + 1) %>" title="Page <%= data.page + 1 %>" class="button"><%= data.page + 1 %></a>
-				<% } %>
-				<% if (data.page == 1 && data.totalPages >= 4) { %>
-					<a href="<%= data.getPageUrl(3) %>" title="Page 3" class="button">3</a>
-				<% } %>
-				<% if (data.page < data.totalPages - 2) { %>
-					<span class="sep">...</span>
-				<% } %>
-				<% if (data.totalPages > 1) { %>
-					<a href="<%= data.getPageUrl(data.totalPages) %>" title="Last Page" class="button<%= data.page == data.totalPages ? ' active' : '' %>">
-						<%= data.totalPages %>
-					</a>
-				<% } %>
-
-				<% if (data.page < data.totalPages) { %>
-					<a href="<%= data.getNextPageUrl() %>" title="Next Page" class="button">
-						&gt;
-					</a>
-				<% } %>
-			</p>
-		<% } %>
+		<cms-pagination class="posts-pagination"></cms-pagination>
 	</div>
 </main>

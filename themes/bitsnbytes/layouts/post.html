@@ -165,14 +165,12 @@
 				<section class="post-tags">
 					<h2>Tags</h2>
 					<ul>
-						<% data.tags.forEach(function(tag) { %>
-							<% if(tag) { %>
+						<% data.getTags('name').forEach(function(tag) { %>
 							<li>
-								<a href="/posts.html?tag=<%= encodeURIComponent(tag) %>" class="post-tag button">
-									<%= tag.replace(/_/g, ' ') %>
+								<a href="<%= tag.url %>" class="post-tag button">
+									<%= tag.name %>
 								</a>
 							</li>
-							<% } %>
 						<% }) %>
 					</ul>
 				</section>
