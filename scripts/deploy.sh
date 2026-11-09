@@ -56,7 +56,7 @@ if [[ -z "$DEPLOY_PATH" ]]; then
 fi
 
 # Determine source directories to sync
-SOURCE_PATHS="app backend themes extras index.php"
+SOURCE_PATHS="app backend themes extras index.php sw.js"
 
 echo "=== MarkdownMasterCMS Deployment ==="
 echo "Mode: $DEPLOY_MODE"
